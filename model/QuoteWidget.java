@@ -42,7 +42,7 @@ public class QuoteWidget implements StaticWidget{
     }
 
     public String getFrase(){
-        int random = (int) (Math.random()*31)+1;
+        int random = (int) (Math.random()* frases.length);
         String frase = frases[random];
         return frase;
     }
@@ -78,7 +78,15 @@ public class QuoteWidget implements StaticWidget{
     }   
     
     @Override
-    public JComponent obtenerVista() {
-        return new JPanel();
-    }
+public JComponent obtenerVista() {
+    JPanel panel = new JPanel(new java.awt.BorderLayout());
+
+    JLabel etiqueta = new JLabel(
+        "<html><div style='text-align:center;'>" + getFrase() + "</div></html>",
+        SwingConstants.CENTER
+    );
+
+    panel.add(etiqueta, java.awt.BorderLayout.CENTER);
+    return panel;
+}
 }
